@@ -4,7 +4,7 @@
 
 @model IEnumerable<SecureAssetManager.Models.Asset>
 
-<h2>Lista de Activos</h2>
+<h2>Lista de Artistas</h2>
 <table id="assetTable" class="table table-striped table-bordered">
 
     <thead>
@@ -22,9 +22,10 @@
                 <td>@asset.CodigoActivo</td>
                 <td>@asset.Nombre</td>
                 <td>@asset.Responsable</td>
+                <td>@asset.Descripcion</td>
+
 
                 <td>
-                    <a href="@Url.Action("Details", "Asset", new { id = asset.ID })">Detalles</a>
                     <a href="@Url.Action("Edit", "Asset", new { id = asset.ID })">Editar</a>
                     <a href="@Url.Action("Delete", "Asset", new { id = asset.ID })">Eliminar</a>
                 </td>
