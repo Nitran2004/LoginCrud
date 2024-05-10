@@ -32,19 +32,16 @@ namespace SecureAssetManager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoActivo,Nombre,Ubicacion,Tipo,Categoria")] Asset asset)
+        public async Task<IActionResult> Create([Bind("CodigoActivo,Nombre,Responsable,Ubicacion,Descripcion")] Asset asset, int[] selectedThreats, int[] selectedVulnerabilities)
         {
-            if (ModelState.IsValid)
-            {
+
+                
+
+
                 _context.Add(asset);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
-            }
-
-            // Si el modelo no es válido, regresar a la vista de creación con el modelo invalidado
-            return View(asset);
         }
-
 
 
 
@@ -73,7 +70,7 @@ namespace SecureAssetManager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,CodigoActivo,Nombre,Responsable,Ubicacion,Descripcion")] Asset asset, int[] selectedThreats, int[] selectedVulnerabilities)
+        public async Task<IActionResult> Edit(int id, [Bind("CodigoActivo,Nombre,Responsable,Ubicacion,Descripcion")] Asset asset, int[] selectedThreats, int[] selectedVulnerabilities)
         {
             if (id != asset.ID)
             {
@@ -101,7 +98,7 @@ namespace SecureAssetManager.Controllers
                 existingAsset.Nombre = asset.Nombre;
                 existingAsset.Ubicacion = asset.Ubicacion;
                 existingAsset.Categoria = asset.Categoria;
-                existingAsset.Tipo = asset.Tipo;
+                existingAsset.Tipo = asset.Categoria;
 
 
 
