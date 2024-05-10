@@ -21,18 +21,85 @@
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <label asp-for="Responsable" class="control-label"></label>
-                <input asp-for="Responsable" class="form-control" />
-                <span asp-validation-for="Responsable" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
-                <span asp-validation-for="Descripcion" class="text-danger"></span>
+                <label asp-for="Tipo" class="control-label"></label>
+                <select asp-for="Tipo" class="form-control">
+                    <option value="">-- Seleccione --</option>
+                    <option value="Primario">Primario</option>
+                    <option value="Secundario">Secundario</option>
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
             </div>
 
+            <div class="form-group">
+                <label asp-for="Categoria" class="control-label"></label>
+                <select asp-for="Categoria" class="form-control">
+                    <option value="">-- Seleccione una opción --</option>
+                    <option value="AG01 - Arquitectura de TI">AG01 - Arquitectura de TI</option>
+                    <option value="AG02 - Distribución de servicios">AG02 - Distribución de servicios</option>
+                    <option value="AG03 - Gestión de claves">AG03 - Gestión de claves</option>
+                    <option value="AG04 - Seguridad de red">AG04 - Seguridad de red</option>
+                    <option value="AG05 - Software">AG05 - Software</option>
+                    <option value="AG06 - Hardware">AG06 - Hardware</option>
+                    <option value="AG07 - Comunicaciones">AG07 - Comunicaciones</option>
+                    <option value="AG08 - Medios">AG08 - Medios</option>
+                    <option value="AG09 - Equipos auxiliares">AG09 - Equipos auxiliares</option>
+                    <option value="AG10 - Localización">AG10 - Localización</option>
+                    <option value="AG11 - Personal">AG11 - Personal</option>
+                    <option value="AG12 - Procesos">AG12 - Procesos</option>
+                    <option value="AG13 - Organización">AG13 - Organización</option>
+                </select>
+                <span asp-validation-for="Categoria" class="text-danger"></span>
+            </div>
 
+<div class="form-group">
+    <label asp-for="Ubicacion"></label>
+    <select asp-for="Ubicacion" class="form-control">
+        <option value="">-- Seleccione una opción --</option>
+        <option value="EDM01 - Evaluar, dirigir y supervisar (EDM)">EDM01 - Evaluar, dirigir y supervisar (EDM)</option>
+        <option value="EDM02 - Asegurar la definición de un marco de gobierno de TI">EDM02 - Asegurar la definición de un marco de gobierno de TI</option>
+        <option value="EDM03 - Asegurar la entrega de beneficios">EDM03 - Asegurar la entrega de beneficios</option>
+        <option value="EDM04 - Asegurar la optimización de riesgos">EDM04 - Asegurar la optimización de riesgos</option>
+        <option value="EDM05 - Asegurar la optimización de recursos">EDM05 - Asegurar la optimización de recursos</option>
+        <option value="APO01 - Gestionar el marco de gestión de TI">APO01 - Gestionar el marco de gestión de TI</option>
+        <option value="APO02 - Gestionar la estrategia">APO02 - Gestionar la estrategia</option>
+        <option value="APO03 - Gestionar la arquitectura empresarial">APO03 - Gestionar la arquitectura empresarial</option>
+        <option value="APO04 - Gestionar la innovación">APO04 - Gestionar la innovación</option>
+        <option value="APO05 - Gestionar el portafolio">APO05 - Gestionar el portafolio</option>
+        <option value="APO06 - Gestionar el presupuesto y los costos">APO06 - Gestionar el presupuesto y los costos</option>
+        <option value="APO07 - Gestionar los recursos humanos">APO07 - Gestionar los recursos humanos</option>
+        <option value="APO08 - Gestionar las relaciones con los clientes">APO08 - Gestionar las relaciones con los clientes</option>
+        <option value="APO09 - Gestionar los acuerdos de servicio">APO09 - Gestionar los acuerdos de servicio</option>
+        <option value="APO010 - Gestionar los proveedores">APO010 - Gestionar los proveedores</option>
+        <option value="APO011 - Gestionar la calidad">APO011 - Gestionar la calidad</option>
+        <option value="APO012 - Gestionar el cumplimiento">APO012 - Gestionar el cumplimiento</option>
+        <option value="APO013 - Gestionar la seguridad y la continuidad">APO013 - Gestionar la seguridad y la continuidad</option>
+        <option value="APO014 - Gestionar los riesgos">APO014 - Gestionar los riesgos</option>
+        <option value="BAI01 - Gestionar los programas y proyectos">BAI01 - Gestionar los programas y proyectos</option>
+        <option value="BAI02 - Gestionar la definición y el diseño de soluciones">BAI02 - Gestionar la definición y el diseño de soluciones</option>
+        <option value="BAI03 - Gestionar la disponibilidad y la capacidad">BAI03 - Gestionar la disponibilidad y la capacidad</option>
+        <option value="BAI04 - Gestionar la seguridad de la información">BAI04 - Gestionar la seguridad de la información</option>
+        <option value="BAI05 - Gestionar los proveedores de servicios">BAI05 - Gestionar los proveedores de servicios</option>
+        <option value="BAI06 - Gestionar los acuerdos de nivel de servicio y los contratos">BAI06 - Gestionar los acuerdos de nivel de servicio y los contratos</option>
+        <option value="BAI07 - Gestionar la calidad de la solución y la validación">BAI07 - Gestionar la calidad de la solución y la validación</option>
+        <option value="BAI08 - Gestionar los cambios organizacionales">BAI08 - Gestionar los cambios organizacionales</option>
+        <option value="BAI09 - Gestionar la capacitación y la concienciación">BAI09 - Gestionar la capacitación y la concienciación</option>
+        <option value="BAI10 - Gestionar la adquisición y el mantenimiento">BAI10 - Gestionar la adquisición y el mantenimiento</option>
+        <option value="BAI11 - Gestionar la entrega y soporte">BAI11 - Gestionar la entrega y soporte</option>
+        <option value="DSS01 - Gestionar la operación de servicio">DSS01 - Gestionar la operación de servicio</option>
+        <option value="DSS02 - Gestionar las peticiones de servicio y soporte">DSS02 - Gestionar las peticiones de servicio y soporte</option>
+        <option value="DSS03 - Gestionar los incidentes y problemas">DSS03 - Gestionar los incidentes y problemas</option>
+        <option value="DSS04 - Gestionar los datos">DSS04 - Gestionar los datos</option>
+        <option value="DSS05 - Gestionar la seguridad">DSS05 - Gestionar la seguridad</option>
+        <option value="DSS06 - Gestionar los cambios">DSS06 - Gestionar los cambios</option>
+        <option value="MEA01 - Monitorear, evaluar y valorar el desempeño y el cumplimiento">MEA01 - Monitorear, evaluar y valorar el desempeño y el cumplimiento</option>
+        <option value="MEA02 - Monitorear, evaluar y valorar el cumplimiento">MEA02 - Monitorear, evaluar y valorar el cumplimiento</option>
+        <option value="MEA03 - Asegurar el cumplimiento de políticas y estándares">MEA03 - Asegurar el cumplimiento de políticas y estándares</option>
+        <option value="MEA04 - Proveer gobierno de TI">MEA04 - Proveer gobierno de TI</option>
+    </select>
+    <span asp-validation-for="Ubicacion" class="text-danger"></span>
+</div>
 
 
 

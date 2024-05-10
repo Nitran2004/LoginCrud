@@ -1,7 +1,7 @@
 ﻿@model SecureAssetManager.Models.Asset
 
 @{
-    ViewData["Title"] = "Eliminar Artista";
+    ViewData["Title"] = "Eliminar ALineamiento";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -11,6 +11,7 @@
     <h4>Detalles del Artista</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
             @Html.DisplayNameFor(model => model.CodigoActivo)
         </dt>
@@ -24,21 +25,24 @@
         <dd>
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Responsable)
+            @Html.DisplayNameFor(model => model.Tipo)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Responsable)
+            @Html.DisplayFor(model => model.Tipo)
         </dd>
 
-
-
         <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            @Html.DisplayNameFor(model => model.Categoria)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Descripcion)
+            @Html.DisplayFor(model => model.Categoria)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ubicacion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ubicacion)
         </dd>
 
 
@@ -46,7 +50,7 @@
     </dl>
 
     <form asp-action="Delete">
-        <input type="hidden" asp-for="CodigoActivo" />
+        <input type="hidden" asp-for="Ubicacion" />
 
         <div class="form-group">
             <input type="submit" value="Eliminar" class="btn btn-danger" />
