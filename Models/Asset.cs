@@ -10,22 +10,13 @@ namespace SecureAssetManager.Models
 
         [Required(ErrorMessage = "El código de activo es obligatorio.")]
         [StringLength(10, ErrorMessage = "El código de activo debe tener máximo 10 caracteres.")]
-        [Display(Name = "ArtistaID")]
+        [Display(Name = "Alineamiento y objetivos de gobierno Sigla AG01-AG13")]
         public string CodigoActivo { get; set; }
 
         [Required(ErrorMessage = "El nombre del activo es obligatorio.")]
         [StringLength(50, ErrorMessage = "El nombre del activo debe tener máximo 50 caracteres.")]
-        [Display(Name = "NombrePilaArtista")]
-        public string Nombre { get; set; }
+        [Display(Name = "Sigla EDM01")]
 
-        [Required(ErrorMessage = "El responsable del activo es obligatorio.")]
-        [StringLength(50, ErrorMessage = "El responsable del activo debe tener máximo 50 caracteres.")]
-        [Display(Name = "NombreArtistico")]
-        public string Responsable { get; set; }
-
-        [StringLength(250, ErrorMessage = "La descripción del activo debe tener máximo 250 caracteres.")]
-        [Display(Name = "FechadeNacimiento")]
-        public string Descripcion { get; set; }
 
 
     }
