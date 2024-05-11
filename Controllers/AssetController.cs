@@ -32,15 +32,18 @@ namespace SecureAssetManager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoActivo,Nombre,Responsable,Ubicacion,Descripcion")] Asset asset, int[] selectedThreats, int[] selectedVulnerabilities)
+        public async Task<IActionResult> Create([Bind("CodigoActivo,Nombre,Ubicacion,Tipo,Categoria")] Asset asset)
         {
 
-                
-
-
+            if (ModelState.IsValid)
+            {
                 _context.Add(asset);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
+            }
+
+            // Si el modelo no es válido, regresar a la vista de creación con el modelo invalidado
+            return View(asset);
         }
 
 
