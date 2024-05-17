@@ -29,14 +29,11 @@
 				<label asp-for="Input.Password" class="form-label"></label>
 				<span asp-validation-for="Input.Password" class="text-danger"></span>
 			</div>
-			<div>
-				<div class="checkbox">
-					<label asp-for="Input.RememberMe" class="form-label">
-						<input class="form-check-input" asp-for="Input.RememberMe" />
-						@Html.DisplayNameFor(m => m.Input.RememberMe)
-					</label>
+			<footer class="border-top footer text-muted">
+				<div class="container">
+					 <a asp-area=""  asp-action="ResetPassword">Restablecer Contraseña</a>
 				</div>
-			</div>
+			</footer>
 			<div>
 				<button class="button" id="login-submit" type="submit">Ingresar</button>
 			</div>
