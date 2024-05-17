@@ -1,0 +1,94 @@
+﻿@model SecureAssetManager.Models.Risk
+
+@{
+    ViewData["Title"] = "Crear Evaluación de Riesgo";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Riesgo</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <select asp-for="Code" class="form-control" asp-items="@(new SelectList(ViewBag.AssetCodes))">
+                    <option value="">-- Selecciona un código --</option>
+                </select>
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ExistingControl" class="control-label"></label>
+                <select asp-for="ExistingControl" class="form-control">
+                    <option value="">-- Selecciona un tipo de control --</option>
+                    <option value="Control de Acceso">Control de Acceso</option>
+                    <option value="Control de Seguridad Física">Control de Seguridad Física</option>
+                    <option value="Control de Seguridad de Red">Control de Seguridad de Red</option>
+                    <option value="Controles de Seguridad de Aplicaciones">Controles de Seguridad de Aplicaciones</option>
+                    <option value="Controles de Seguridad de Datos">Controles de Seguridad de Datos</option>
+                </select>
+                <span asp-validation-for="ExistingControl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+<h4>Activos Registrados</h4>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código Activo</th>
+            <th>Nombre</th>
+            <th>Responsable</th>
+            <th>Ubicación</th>
+            <th>Descripción</th>
+            <th>Tipo</th>
+            <th>Categoría</th>
+            <th>Clasificación</th>
+            <th>Etiqueta Principal</th>
+            <th>Valoración Confidencialidad</th>
+            <th>Valoración Integridad</th>
+            <th>Valoración Disponibilidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var asset in ViewBag.Assets)
+        {
+            <tr>
+                <td>@asset.CodigoActivo</td>
+                <td>@asset.Nombre</td>
+                <td>@asset.Responsable</td>
+                <td>@asset.Ubicacion</td>
+                <td>@asset.Descripcion</td>
+                <td>@asset.Tipo</td>
+                <td>@asset.Categoria</td>
+                <td>@asset.Clasificacion</td>
+                <td>@asset.EtiquetaPrincipal</td>
+                <td>@asset.ValoracionConfidencialidad</td>
+                <td>@asset.ValoracionIntegridad</td>
+                <td>@asset.ValoracionDisponibilidad</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
