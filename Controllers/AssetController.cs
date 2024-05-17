@@ -23,6 +23,8 @@ namespace SecureAssetManager.Controllers
             return View(await _context.Assets.ToListAsync());
         }
 
+        //Cambio para Github
+
         public IActionResult Create()
         {
             ViewBag.Threats = _context.Threats.ToList();
