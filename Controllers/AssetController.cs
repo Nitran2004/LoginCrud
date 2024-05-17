@@ -73,7 +73,7 @@ namespace SecureAssetManager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CodigoActivo,Nombre,Responsable,Ubicacion,Descripcion")] Asset asset, int[] selectedThreats, int[] selectedVulnerabilities)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,CodigoActivo,Nombre,Ubicacion,Tipo,Categoria")] Asset asset, int[] selectedThreats, int[] selectedVulnerabilities)
         {
             if (id != asset.ID)
             {
@@ -84,10 +84,10 @@ namespace SecureAssetManager.Controllers
             {
                 // Obtener el asset existente incluyendo sus amenazas y vulnerabilidades
                 var existingAsset = await _context.Assets
-                   
+
                     .FirstOrDefaultAsync(a => a.ID == asset.ID);
 
-                if (existingAsset == null)
+                if (existingAsset ==  null)
                 {
                     return NotFound();
                 }
@@ -101,7 +101,7 @@ namespace SecureAssetManager.Controllers
                 existingAsset.Nombre = asset.Nombre;
                 existingAsset.Ubicacion = asset.Ubicacion;
                 existingAsset.Categoria = asset.Categoria;
-                existingAsset.Tipo = asset.Categoria;
+                existingAsset.Tipo = asset.Tipo;
 
 
 
@@ -126,8 +126,26 @@ namespace SecureAssetManager.Controllers
 
         private void UpdateSelectedThreats(Asset asset, int[] selectedThreats)
         {
-            // Eliminar las amenazas deseleccionadas
+            // Lógica para actualizar las amenazas seleccionadas
+            var existingThreats = _context.AssetThreats.Where(at => at.AssetId == asset.ID).ToList();
+            var currentThreatIds = existingThreats.Select(at => at.ThreatId).ToList();
 
+            var newThreats = selectedThreats.Except(currentThreatIds);
+            var removedThreats = currentThreatIds.Except(selectedThreats);
+
+            foreach (var threatId in newThreats)
+            {
+                _context.AssetThreats.Add(new AssetThreat { AssetId = asset.ID, ThreatId = threatId });
+            }
+
+            foreach (var threatId in removedThreats)
+            {
+                var threatToRemove = existingThreats.FirstOrDefault(at => at.ThreatId == threatId);
+                if (threatToRemove != null)
+                {
+                    _context.AssetThreats.Remove(threatToRemove);
+                }
+            }
         }
 
         private void UpdateSelectedVulnerabilities(Asset asset, int[] selectedVulnerabilities)
